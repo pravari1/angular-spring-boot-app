@@ -1,0 +1,12 @@
+<kendo-grid
+          [data]="users"
+          [sortable]="true"
+
+        >
+        <kendo-grid-column [headerStyle]="{'font-weight': 'bold'}" title="First Name" field="firstName" ></kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight': 'bold'}" title="Last Name" field="lastName" ></kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight': 'bold'}" title="Email" field="email" ></kendo-grid-column>
+        <kendo-grid-column [headerStyle]="{'font-weight': 'bold'}" title="Age" field="age" [sortable]="true"></kendo-grid-column>
+
+</kendo-grid>
+<button id="grid-button" class="btn btn-primary" (click)="save($event);" [disabled]="users.length < 1">Save</button>
