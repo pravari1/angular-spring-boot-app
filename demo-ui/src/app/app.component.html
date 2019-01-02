@@ -1,0 +1,29 @@
+<div class='container' style='position: relative;'>
+    <div style="padding-bottom: 5%">
+      <div class='row'>
+          <app-header></app-header>
+      </div>
+      <div class='row'>
+        <div class="col-sm-5">
+          <h1> Admin Panel</h1>
+        </div>
+      </div>
+      <div class="row">
+        <nav class='navbar navbar-default'> 
+          <div class='container-fluid'>
+              <ul class="nav navbar-nav">
+                  <li routerLink="/employee" routerLinkActive='active' ><a>Employee</a></li>
+                  <li routerLink="/role"  routerLinkActive='active' ><a>Roles</a></li>
+                </ul>
+          </div>
+        </nav>
+      </div>
+      <div class='row'>
+        <app-alert></app-alert>
+      </div>
+      <div class='row'>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div class="footer"><strong>Powered by HRSolutions ©2018.</strong></div>
+</div>

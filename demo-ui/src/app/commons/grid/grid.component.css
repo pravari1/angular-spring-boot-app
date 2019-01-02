@@ -1,0 +1,11 @@
+#grid-button{
+    float: right;
+    margin-top: 2%;
+}
+.grid-column{
+  font-weight: bold;
+}
+
+.grid-head-button {
+  float: right;
+}

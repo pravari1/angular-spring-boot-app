@@ -1,0 +1,19 @@
+<kendo-grid [data]="config.tableData" [sortable]="true" (add)="addHandler($event)" (remove)="removeHandler($event)"  (edit)="editHandler($event)" >
+    <ng-template kendoGridToolbarTemplate>
+    
+        <button type="button"  class="grid-head-button btn btn-primary" (click)="refreshTable($event);">Refresh</button>
+        <button type="button" style="border-color:black; margin-right: 1em" class="grid-head-button btn btn-secondary" kendoGridAddCommand>Add new</button>
+    </ng-template>
+  <ng-container *ngFor="let header of config.headers">
+    <kendo-grid-column [headerStyle]="{'font-weight': 'bold'}" title="{{header.title}}" field="{{header.field}}">
+    </kendo-grid-column>
+  </ng-container>
+  <kendo-grid-command-column title="Action" [headerStyle]="{'font-weight': 'bold'}">
+      <ng-template kendoGridCellTemplate>
+          <button type="button" class="btn btn-danger" kendoGridRemoveCommand >Remove</button>
+          <button type="button" style="background-color: #2B5799;" class="btn btn btn-info" kendoGridEditCommand >Edit</button>
+      </ng-template>
+  </kendo-grid-command-column>
+</kendo-grid>
+
+
