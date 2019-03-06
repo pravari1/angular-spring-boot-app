@@ -8,6 +8,8 @@ import { EmployeeComponent } from './employee.component';
 import { Employee } from './employee.model';
 import { EmployeeService } from './employee.service';
 import { MyDateComponent } from '../commons/my-date/my-date.component';
+import { AlertService } from '../commons/util/alert/alert.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('Employee component function', () => {
@@ -16,9 +18,9 @@ describe('Employee component function', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientTestingModule],
+      imports: [FormsModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [EmployeeComponent, MyDateComponent],
-      providers: [EmployeeService, ModalService],
+      providers: [EmployeeService, ModalService, AlertService],
       schemas: [NO_ERRORS_SCHEMA]
     });
     fixture = TestBed.createComponent(EmployeeComponent);
@@ -158,9 +160,9 @@ describe('Interaction with template', () => {
   let fixture;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientTestingModule],
+      imports: [FormsModule, HttpClientTestingModule, RouterTestingModule],
       declarations: [EmployeeComponent, MyDateComponent],
-      providers: [EmployeeService, ModalService],
+      providers: [EmployeeService, ModalService, AlertService],
       schemas: [NO_ERRORS_SCHEMA]
     });
     fixture = TestBed.createComponent(EmployeeComponent);

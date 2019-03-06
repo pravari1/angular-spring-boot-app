@@ -9,23 +9,24 @@ describe('Employee component open function test', () => {
     let component: EmployeeComponent;
     let modalService;
     let employeeService;
-    let alertService;
+    // let alertService;
 
     beforeEach(() => {
         modalService = new ModalService();
-        alertService = new AlertService(null);
+        // alertService = new AlertService(null);
 
         spyOn(modalService, 'open').and.callFake(() => {});
-        employeeService = new EmployeeService(null);
-        component = new EmployeeComponent(employeeService , modalService, alertService);
+        employeeService = new EmployeeService(null); 
+        component = new EmployeeComponent(employeeService , modalService, null);
     });
-    it('should get employee from config tabledata when calling openModel', () => {
+    it('should get employee from config tabledata when calling openModal', () => {
         const action = 'Edit';
         const empIndex = 1;
         const config = [new Employee(), new Employee()];
         config[0].firstName = '0';
         config[1].firstName = '1';
         spyOn(component, 'closeModal').and.callFake(() => {});
+        spyOn(component, 'resetForm').and.callFake(() => {});
         component.config = {tableData: []};
         component.config.tableData = config;
         component.openModal(action, '', empIndex);
@@ -36,6 +37,7 @@ describe('Employee component open function test', () => {
     it('should set employee a new employee for action add', () => {
         const action = 'Add';
         spyOn(component, 'closeModal').and.callFake(() => {});
+        spyOn(component, 'resetForm').and.callFake(() => {});
         component.openModal(action, '', 0);
 
         expect(component.selected).toEqual(-1);
@@ -44,6 +46,7 @@ describe('Employee component open function test', () => {
     it('should call open of modalservice with id', () => {
         const id = 'my-id';
         spyOn(component, 'closeModal').and.callFake(() => {});
+        spyOn(component, 'resetForm').and.callFake(() => {});
         component.openModal('', id, 0);
 
         expect(modalService.open).toHaveBeenCalledWith(id);
@@ -67,19 +70,4 @@ describe('Employee component open function test', () => {
         expect(component.employee).not.toBeUndefined();
     });
 
-    it('should reset the Employee on resetForm', () => {
-        component.employee.firstName = 'testName';
-        component.employee.lastName = 'lastName';
-        component.employee.email = 'test@email.com';
-        component.employee.dob = new Date('10/10/2018');
-        spyOn(component, 'closeModal').and.callFake(() => {});
-        
-        component.resetForm();
-
-        expect(component.employee.firstName).toBeUndefined();
-        expect(component.employee.lastName).toBeUndefined();
-        expect(component.employee.email).toBeUndefined();
-        expect(component.employee.dob).toBeUndefined();
-
-    });
 });
